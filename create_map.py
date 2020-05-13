@@ -1,52 +1,44 @@
-from country import Country
-from json import load
 import folium
 
+from country import Country
+from get_data import load_data
 
-def get_sum_countries():
-    countries = set()
-    with open('data/summary.json', 'r', encoding='UTF-8') as f:
-        sum_data = load(f)
-    for cntry in sum_data['Countries']:
-        try:
-            cur_cntry = Country(cntry['Country'], cntry['CountryCode'])
-            cur_cntry.add_day(cntry['Date'], cntry['TotalConfirmed'],
-                              cntry['TotalDeaths'], cntry['TotalRecovered'])
-            cur_cntry.set_total()
-            countries.add(cur_cntry)
-        except KeyError as e:
-            print(e)
-    return countries
+# from folium.plugins import FloatImage
 
+# Create a map object
+sum_map = folium.Map(tiles='cartodbdark_matter', location=[0, 0], zoom_start=2)
 
-def get_sum_confirmed(countries):
-    confirmed = {}
-    for cntry in countries:
-        confirmed[cntry._name] = cntry._confirmed
-    return confirmed
+borders = load_data('borders')
 
+sum_data = load_data('summary')
+countries = []
+for cntry in sum_data['Countries']:
+    try:
+        countries.append(
+            Country(cntry['CountryCode'], cntry['TotalConfirmed']))
+    except KeyError as e:
+        print(e)
+countries = list(map(lambda x: (x.iso3, x.cpm), countries))
 
-def create_map(countries):
-    sum_map = folium.Map()
-    confirmed_fg = folium.FeatureGroup()
-    # confirmed_fg.add_child(folium.GeoJson(data=open('borders.json', 'r').read(), style_function=lambda x: {'fillColor': ''}))
-    for cntry in countries:
-        folium.CircleMarker(
-            location=cntry._coordinates,
-            radius=0.0001*cntry._confirmed,
-            popup=cntry._name,
-            color='red',
-            fill=True,
-            fill_color='#3186cc'
-        ).add_to(sum_map)
-    sum_map.save('sum_map.html')
+# Display the choropleth map
+choropleth = folium.Choropleth(
+    geo_data=borders,
+    data=countries,
+    key_on='feature.id',
+    bins=[0] + [156.25 * 2**i for i in range(8)],
+    fill_color='YlOrRd',
+    fill_opacity=1,
+    smooth_factor=0,
+    highlight=True
+).add_to(sum_map)
 
+# Delete legend
+for key in choropleth._children:
+    if key.startswith('color_map'):
+        del choropleth._children[key]
 
-def main():
-    countries = get_sum_countries()
-    confirmed = get_sum_confirmed(countries)
-    create_map(countries)
+# Display the name of the countries
+style_function = 'font-size: 15px; font-weight: bold'
+choropleth.geojson.add_child(folium.features.GeoJsonTooltip(['name'], style=style_function, labels=False))
 
-
-if __name__ == '__main__':
-    main()
+sum_map.save('sum_map.html')

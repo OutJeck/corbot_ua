@@ -1,31 +1,37 @@
-from collections import namedtuple
-
+import country_converter as coco
 import pandas as pd
 
 
 class Country:
-    DF = pd.read_csv('data/coordinates.csv', index_col=0, keep_default_na=False)
+    cc = coco.CountryConverter()
+    df = pd.read_csv('data/population.csv', index_col=1, skiprows=4)
+    df = df['2018']
 
-    def __init__(self, name, code):
-        # General info
-        self._name = name
-        self._code = code
-        the_country = Country.DF.loc[code]
-        self._coordinates = tuple(the_country[['latitude', 'longitude']])
-        # COVID-19-related info
+    def __init__(self, iso2, confirmed):
+        self._name = Country.cc.convert(iso2, to='name_short')
+        self._iso3 = Country.cc.convert(iso2)
+        self._confirmed = confirmed
+        self._cpm = self._calculate_cpm(Country.df[self._iso3])
         self._days = {}
-        self._confirmed = 0
-        self._deaths = 0
-        self._recovered = 0
 
-    def add_day(self, date, confirmed, deaths, recovered):
-        day = namedtuple('day', ['confirmed', 'deaths', 'recovered'])
-        self._days[date] = day(confirmed, deaths, recovered)
+    def _calculate_cpm(self, population):
+        return (self._confirmed/population) * 1000000
 
-    def set_total(self):
-        self._confirmed, self._deaths, self._recovered \
-            = list(self._days.values())[-1]
+    @property
+    def iso3(self):
+        return self._iso3
+
+    @property
+    def cpm(self):
+        return self._cpm
 
     def __repr__(self):
-        return f"'Country': '{self._name}', 'CountryCode': {self._code}, " \
-               f"'Coordinates': {self._coordinates}"
+        return f"Name: {self._name}\nISO 3: {self._iso3}\n" \
+               f"Confirmed: {self._confirmed}\nCPM: {self._cpm}"
+
+    def __str__(self):
+        return self._name
+
+
+if __name__ == '__main__':
+    pass

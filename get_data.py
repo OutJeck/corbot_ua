@@ -33,4 +33,3 @@ def get_day_one_data(country):
 
 if __name__ == "__main__":
     get_sum_data()
-    get_day_one_data("ukraine")

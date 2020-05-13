@@ -1,2 +1,3 @@
-requests
-matplotlib
+country_converter
+pandas
+folium
