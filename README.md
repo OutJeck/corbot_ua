@@ -2,13 +2,18 @@
 
 ![commit activity](https://img.shields.io/github/commit-activity/m/kenticent9/corbot_ua) ![last commit](https://img.shields.io/github/last-commit/kenticent9/corbot_ua)
 
-This project regarding COVID-19 consists of 3 parts:
+This is a repository for mini-projects about COVID-19: EpidemLab, Corbot and Cormap, which 
+* simulate the spread of the disease with your parameters
+* keep you updated with the daily coronavirus situation in a country you choose, build comparison plots
+* display the current coronavirus situation around the globe 
+
+respectively. It was created as a semester work from the programming basics course of the two students of Ukrainian Catholic University.
 
 ## EpidemLab
 
 ![EpidemLab version](https://img.shields.io/badge/version-1.0-informational)
 
-This is an application for simulating a disease spread with you parameters.
+This application simulates a disease spread with you parameters. It is simple yet versatile and effectively shows and visualizes the dependency of the spread of a disease on its parameters and mitigation measures.
 
 ### Example
 
@@ -22,7 +27,7 @@ No quarantine
 
 ### Guide
 
-In summary, there are 13 parameters of the simulation, 10 of which you can enter by yourself.
+In summary, there are 13 parameters, 10 of which you can enter by yourself.
 
 Disease:
 * Infection rate: float [0, 1] - chance of infected cell infecting its neighbour
@@ -41,9 +46,11 @@ Medication:
 
 Simulation:
 * Filename: str - the file's name in which the results of the simulation will be saved
-* Number of days
-* Width
-* Density
+* Number of days: int - how long the simulation lasts (can't be entered)
+* Width: int - the number of cells on each side of the grid (can't be entered)
+* Population density: int - the percentage of board covered with cells (can't be entered)
+
+The last three parameters cannot be entered by the user, because they proved themselves to be optimal and there's little sense in changing them, but if you want, you can do it by editing the code.
 
 ## Corbot
 
