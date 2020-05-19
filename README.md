@@ -46,3 +46,5 @@ Simulation:
 ![plot](https://github.com/kenticent9/corbot_ua/blob/master/images/bot.png)
 
 ## Map
+
+![map](https://github.com/kenticent9/corbot_ua/blob/master/images/map.png)
