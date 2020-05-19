@@ -1,4 +1,5 @@
-from country import Country
+from corbot_cormap.country import Country
+
 
 def example_fun():
     # to optimize the process, ie to use map creation
@@ -7,7 +8,6 @@ def example_fun():
     # some functions will not allow you to use.
     # I will demonstrate by example, which will
     # show what opportunities our ADT has.
-
 
     # part for the normal use
 

@@ -6,8 +6,8 @@ import country_converter as coco
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
 from telegram import ReplyKeyboardRemove, ParseMode
 # our modules
-from build_plot import create_plot
-from country import Country
+from corbot_cormap.build_plot import create_plot
+from corbot_cormap.country import Country
 
 #         GLOBAL VARIABLES
 # ==========================================
