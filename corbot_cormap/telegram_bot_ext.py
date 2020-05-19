@@ -371,7 +371,7 @@ def del_country(update, context):
 
 def main():
     """Main function for realizing a telegram bot."""
-    updater = Updater(token='1123570202:AAHvfhWWcTWB_xY_978sn3Irpmhw4R12g8A',
+    updater = Updater(token='TOKEN_HERE',
                       use_context=True)
     dispatcher = updater.dispatcher
 
