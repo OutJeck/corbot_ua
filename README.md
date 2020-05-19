@@ -54,7 +54,44 @@ The last three parameters cannot be entered by the user, because they proved the
 
 ![Corbot version](https://img.shields.io/badge/version-1.0-informational)
 
+Corbot is a bot based in the telegram application. It will help you learn the latest information about the coronavirus of selected countries. You will be able to build a graph comparing the two countries in terms of the number of patients. And, most importantly, subscribe to the daily newsletter, where you can add and remove from the list, countries on which you follow. Every day you will receive a message with general statistics on the number of deaths, illnesses and people cured. 
+
+The program has several commands. I will tell you about each of them now.
+
+First command:
+
+```/plot``` - comparative statistics of the two countries on the number of new patients.
+To better understand this command, review this image:
+
 ![plot](https://github.com/kenticent9/corbot_ua/blob/master/images/bot.png)
+
+Now I will talk about the subscription function and related commands. To use it, enter the /reference command
+
+```/reference``` - receiving a daily subscription to information about coronavirus. 
+
+After entering the command, you choose which country you want to subscribe to. From now on, every day you will receive information about the number of sick, dead and recovered.
+
+To better customize the subscription feature, a series of commands have been added to control receipt. That is, add another country to the subscription list, delete one of the existing countries, unsubscribe. In the future, it is planned to add new features, such as clock selection.
+
+To better understand subscription, I summarize the list of commands:
+
+```/del_reference``` - to stop using subscription.
+
+```/add_country``` - adds country to your subscription.
+
+```/del_country``` - deletes country from your subscription.
+
+Also, a few more commands have been added. For example, to obtain general information about the country (sick, dead, recovered), to receive separate information, only about one thing (sick, dead or recovered). Now here is a list of these commands:
+
+```/deaths``` - the number of deaths from the coronavirus in the selected country at the moment.
+
+```/confirmed``` - the number of confirmed patients from the coronavirus in the selected country at the moment.
+
+```/recovered``` - the number of recovered people from the coronavirus in the selected country at the moment.
+
+```/country_total``` - displays general statistics of the country at the moment.
+
+But to understand all these actions, commands, I recommend trying this bot on your own, just follow the link https://t.me/corbot_bot
 
 ## Map
 
