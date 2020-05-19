@@ -1,6 +1,6 @@
 # CovidHub
 
-![commit activity](https://img.shields.io/github/commit-activity/w/kenticent9/corbot_ua) ![last commit](https://img.shields.io/github/last-commit/kenticent9/corbot_ua)
+![license](https://img.shields.io/github/license/kenticent9/corbot_ua) ![commit activity](https://img.shields.io/github/commit-activity/m/kenticent9/corbot_ua) ![last commit](https://img.shields.io/github/last-commit/kenticent9/corbot_ua)
 
 This is a repository for mini-projects about COVID-19: EpidemLab, Corbot and Cormap, which 
 * simulate the spread of the disease with your parameters
