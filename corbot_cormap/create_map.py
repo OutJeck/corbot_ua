@@ -1,9 +1,9 @@
 import folium
 
-from country import Country
-from get_data import load_data
+from corbot_cormap.country import Country
+from corbot_cormap.get_data import load_data
 
-# from folium.plugins import FloatImage
+from folium.plugins import FloatImage
 
 # Create a map object
 sum_map = folium.Map(tiles='cartodbdark_matter', location=[0, 0], zoom_start=2)
@@ -32,13 +32,17 @@ choropleth = folium.Choropleth(
     highlight=True
 ).add_to(sum_map)
 
-# Delete legend
+# Delete the legend of the choropleth
 for key in choropleth._children:
     if key.startswith('color_map'):
         del choropleth._children[key]
+
+# Display image legend
+legend = 'https://i.imgur.com/axMZjuk.png'
+FloatImage(legend, bottom=17, left=94).add_to(sum_map)
 
 # Display the name of the countries
 style_function = 'font-size: 15px; font-weight: bold'
 choropleth.geojson.add_child(folium.features.GeoJsonTooltip(['name'], style=style_function, labels=False))
 
-sum_map.save('sum_map.html')
+sum_map.save('website/templates/sum_map.html')
