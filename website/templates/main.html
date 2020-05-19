@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<!--
+	created by UCU students
+	MIT license
+-->
+<html>
+	<head>
+		<title>CovidHub by UCU students</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo">
+					<a href="#">CovidHub
+						<span>by</span>
+						<span>Dobrovolskyy Nazar</span>
+						<span>Yasinovskyi Pavlo</span>
+					</a>
+				</div>
+			</header>
+
+
+		<!-- Main -->
+			<section id="main">
+				<div class="inner">
+
+				<!-- One -->
+					<section id="one" class="wrapper style1">
+
+						<div class="image fit flush">
+							<img src="static/images/pic02.jpg" alt="" />
+						</div>
+						<header class="special">
+							<h2>Students' project of the Ukrainian Catholic University</h2>
+								<div class="row 200%">
+									<div class="7u$ 12u$(medium)">
+										<!-- Buttons -->
+											<ul class="actions fit">
+												<li><a href="sum_map.html" class="button special fit">Covid-19 map</a></li>
+												<li><a href="{{url_for('download_file')}}" class="button special fit">EpidemLab</a></li>
+												<li><a href="https://t.me/corbot_bot" class="button special fit">Corbot</a></li>
+												<li><a href="{{url_for('download')}}" class="button special fit">Documentary</a></li>
+											</ul>
+									</div>
+								</div>
+						</header>
+						<div class="content">
+							<h2>About Covid-19 map</h2>
+							<p>This is a map based on OpenStreetMap. It is a map of the world, which is painted in different shades of white, yellow and red. Each color demonstrates the number of patients with covid per one million in the country. This is done to improve the analysis, as some countries have small populations but a high percentage of victims. Therefore, the calculation of the victims per one million will perfectly demonstrate the percentage dependence of patients around the world. </p>
+							<p>To talk less, it is better to look with your own eyes.</p>
+							<h2>About Corbot</h2>
+							<p>Corbot is a bot based in the telegram application. It will help you learn the latest information about the coronavirus of selected countries. You will be able to build a graph comparing the two countries in terms of the number of patients. And, most importantly, subscribe to the daily newsletter, where you can add and remove from the list of countries you follow. Every day you will receive a message with general statistics on the number of deaths, illnesses and people cured. Just scroll by pressing the Corbot button.</p>
+							<h2>About EpidemLab</h2>
+							<p>This application simulates a disease spread with you parameters. It is simple yet versatile and effectively shows and visualizes the dependency of the spread of a disease on its parameters and mitigation measures. In summary, there are 13 parameters, 10 of which you can enter by yourself.</p>
+							<h2>Documentary</h2>
+							<p>To learn more about this project, the main functions of the program and the telegram bot - we recommend reading the official documentation of this project. The link is also attached at the top, you will find it on the Documentary button</p>
+						</div>
+					</section>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://github.com/kenticent9/corbot_ua" class="icon fa-github"><span class="label">Github</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. All rights reserved. Creates by <a href="https://ucu.edu.ua/en/">UCU</a> students.
+				</div>
+			</footer>
+
+
+	</body>
+</html>
