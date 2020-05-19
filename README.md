@@ -25,30 +25,30 @@ No quarantine
 
 ### Usage
 
-In summary, there are 13 parameters, 10 of which you can enter by yourself.
+It is recommended to launch the simulation with default parameters on the first time, without entering anything. In summary, there are 13 parameters, 10 of which you can enter by yourself.
 
-Disease:
-* Infection rate: float [0, 1] - chance of infected cell infecting its neighbour
-* Serial interval: int [0, inf) - how fast the disease spreads
-* Contagious period: int [0, inf) - how long the cell is contagious
-* Fatality: float [0, 1] - the chance of infected cell dying when the contagious period ends
-* Immunity: float [0, 1] - the chance of healthy cell not being reinfected
+DISEASE:
+* ```Infection rate```: float [0, 1] - chance of infected cell infecting its neighbour
+* ```Serial interval```: int [0, inf) - how fast the disease spreads
+* ```Contagious period```: int [0, inf) - how long the cell is contagious
+* ```Fatality```: float [0, 1] - the chance of infected cell dying when the contagious period ends
+* ```Immunity```: float [0, 1] - the chance of healthy cell not being reinfected
 
-Quarantine:
-* Quarantine introduced: int [0, inf) - the day on which the quarantine is introduced
-* Quarantine effectiveness: float [0, 1] - the chance of infected cell being found and put on quarantine forever
+QUARANTINE:
+* ```Quarantine introduced```: int [0, inf) - the day on which the quarantine is introduced
+* ```Quarantine effectiveness```: float [0, 1] - the chance of infected cell being found and put on quarantine forever
 
-Medication:
-* Medication invented: int [0, inf) - the day on which the medicine is invented
-* Medication effectiveness: float [0, 1] - the chance of infected cell recovering after taking the medicine
+MEDICATION:
+* ```Medication invented```: int [0, inf) - the day on which the medicine is invented
+* ```Medication effectiveness```: float [0, 1] - the chance of infected cell recovering after taking the medicine
 
-Simulation:
-* Filename: str - the file's name in which the results of the simulation will be saved
-* Number of days: int 200 - how long the simulation lasts (can't be entered)
-* Width: int 57 - the number of cells on each side of the grid (can't be entered)
-* Population density: int 0.7 - the percentage of board covered with cells (can't be entered)
+SIMULATION:
+* ```Filename```: str - the file's name in which the results of the simulation will be saved
+* ```Number of days```: int 200 - how long the simulation lasts (can't be entered)
+* ```Width```: int 57 - the number of cells on each side of the grid (can't be entered)
+* ```Population density```: int 0.7 - the percentage of board covered with cells (can't be entered)
 
-The last three parameters cannot be entered by the user, because they proved themselves to be optimal and there's little sense in changing them, but if you want, you can do it by editing the code.
+The last three parameters cannot be entered by the user, because they proved themselves to be optimal and there's little sense in changing them. But if you want, you can do it by editing the code.
 
 ## Corbot
 
