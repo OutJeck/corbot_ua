@@ -13,9 +13,7 @@ respectively. It was created as a semester work from the programming basics cour
 
 ![EpidemLab version](https://img.shields.io/badge/version-1.0-informational)
 
-This application simulates a disease spread with you parameters. It is simple yet versatile and effectively shows and visualizes the dependency of the spread of a disease on its parameters and mitigation measures.
-
-### Example
+This application simulates a disease spread with you parameters. It is simple yet versatile and effectively shows and visualizes the dependency of the spread of a disease on its parameters and mitigation measures. The idea was developed thanks to the article from https://towardsdatascience.com.
 
 With quarantine
 
@@ -25,7 +23,7 @@ No quarantine
 
 ![no_q](https://github.com/kenticent9/corbot_ua/blob/master/images/no_q.gif)
 
-### Guide
+### Usage
 
 In summary, there are 13 parameters, 10 of which you can enter by yourself.
 
@@ -46,9 +44,9 @@ Medication:
 
 Simulation:
 * Filename: str - the file's name in which the results of the simulation will be saved
-* Number of days: int - how long the simulation lasts (can't be entered)
-* Width: int - the number of cells on each side of the grid (can't be entered)
-* Population density: int - the percentage of board covered with cells (can't be entered)
+* Number of days: int 200 - how long the simulation lasts (can't be entered)
+* Width: int 57 - the number of cells on each side of the grid (can't be entered)
+* Population density: int 0.7 - the percentage of board covered with cells (can't be entered)
 
 The last three parameters cannot be entered by the user, because they proved themselves to be optimal and there's little sense in changing them, but if you want, you can do it by editing the code.
 
@@ -61,5 +59,7 @@ The last three parameters cannot be entered by the user, because they proved the
 ## Map
 
 ![Map version](https://img.shields.io/badge/version-1.1-informational)
+
+This is a simple choropleth map that displays the number of infected per one million. It is created via folium and uses the Country ADT wich stores all the needed information about the country it represents.
 
 ![map](https://github.com/kenticent9/corbot_ua/blob/master/images/map.png)
