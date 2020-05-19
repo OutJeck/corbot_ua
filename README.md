@@ -1,8 +1,12 @@
 # CovidHub
 
+![commit activity](https://img.shields.io/github/commit-activity/m/kenticent9/corbot_ua) ![last commit](https://img.shields.io/github/last-commit/kenticent9/corbot_ua)
+
 This project regarding COVID-19 consists of 3 parts:
 
 ## EpidemLab
+
+![EpidemLab version](https://img.shields.io/badge/version-1.0-informational)
 
 This is an application for simulating a disease spread with you parameters.
 
@@ -43,8 +47,12 @@ Simulation:
 
 ## Corbot
 
+![Corbot version](https://img.shields.io/badge/version-1.0-informational)
+
 ![plot](https://github.com/kenticent9/corbot_ua/blob/master/images/bot.png)
 
 ## Map
+
+![Map version](https://img.shields.io/badge/version-1.1-informational)
 
 ![map](https://github.com/kenticent9/corbot_ua/blob/master/images/map.png)
