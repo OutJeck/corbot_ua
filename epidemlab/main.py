@@ -12,7 +12,18 @@ WHITE = '#FFFFFF'
 
 
 class Cell:
+    """Represents a cell that has 5 states: healthy, infected, but not
+    contagious, infected and contagious, quarantined, and dead. Each of
+    them has a corresponding color and determines the logic of the
+    methods."""
+
     def __init__(self, x, y, color, grid, canvas):
+        """Initialize the attributes, including coordinates on the
+        canvas, of a new healthy or dead cell depending on its color.
+
+        The Cell is combined with the Simulation and Application by
+        composition.
+        """
         self.infected = False
         self.infected_once = False
         self.serial = 0  # Serial interval - how fast the disease spread from
@@ -22,7 +33,6 @@ class Cell:
 
         self.medicated = False
         self.quarantined = False
-
         # Coordinates of the cell on the canvas, previously multiplied by 12
         self.x = x
         self.y = y
@@ -34,10 +44,12 @@ class Cell:
         self.grid.num += 1
 
     def draw(self):
+        """Render the cell on the canvas."""
         self.canvas.create_oval(self.x, self.y, self.x+10, self.y+10,
                                 fill=self.color)
 
     def infect(self):
+        """Infect the cell."""
         self.color = ORANGE
         self.draw()
         self.infected = True
@@ -50,6 +62,7 @@ class Cell:
             self.grid.num_infected += 1
 
     def recover(self):
+        """Recover the cell."""
         self.color = GREEN
         self.draw()
         self.infected = False
@@ -60,6 +73,7 @@ class Cell:
         self.grid.cur_infected -= 1
 
     def die(self):
+        """Kill the cell."""
         self.color = BLACK
         self.draw()
         self.infected = False
@@ -67,17 +81,21 @@ class Cell:
         self.grid.cur_infected -= 1
 
     def quarantine(self):
+        """Quarantine the cell."""
         self.color = BLUE
         self.draw()
         self.quarantined = True
 
     def medicate(self):
+        """Medicate the cell."""
         if random.random() < self.grid.MED_EFFECTIVENESS:
             self.recover()
         else:
             self.medicated = True
 
     def process(self):
+        """It is assumed that this method is used only with infected
+        cells."""
         if self.serial > 0:
             self.serial -= 1
         else:
@@ -93,7 +111,14 @@ class Cell:
 
 
 class Simulation:
+    """The simulation."""
+
     def __init__(self, application):
+        """Initialize the default parameters of the simulation, which
+        can be changed later by user in GUI.
+
+        These parameters are chosen to best suit the COVID-19.
+        """
         # Simulation
         self.WIDTH = 57
         self.DAYS = 200
@@ -127,6 +152,7 @@ class Simulation:
         self.canvas.update()
 
     def get_stats(self):
+        """Return the dynamic stats of the simulation."""
         try:
             ratio = self.num_recovered/self.num_infections * 100
         except ZeroDivisionError:
@@ -143,6 +169,7 @@ Recovered: {} out of {} ({:.2f}%)""".format(self.cur_infected,
                                             self.num_infections, ratio)
 
     def get_params(self):
+        """Return the constant parameters of the simulation."""
         return """DISEASE
 Infection rate: {:.2f}%
 Serial interval: {} days
@@ -156,29 +183,33 @@ Quarantine effectiveness: {:.2f}%
 
 MEDICINE
 Medicine invented: {}th day
-Medicine effectiveness: {:.2f}%""".format(self.RATE * 100,
+Medicine effectiveness: {:.2f}%""".format(self.RATE*100,
                                           self.SERIAL,
                                           self.CONTAGIOUS,
-                                          self.FATALITY * 100,
-                                          self.IMMUNITY * 100,
+                                          self.FATALITY*100,
+                                          self.IMMUNITY*100,
                                           self.Q_INTRODUCED,
-                                          self.Q_EFFECTIVENESS * 100,
+                                          self.Q_EFFECTIVENESS*100,
                                           self.MED_INVENTED,
-                                          self.MED_EFFECTIVENESS * 100)
+                                          self.MED_EFFECTIVENESS*100)
 
-    def infect_middle_cell(self):
+    def _infect_middle_cell(self):
+        """Infect the middle cell."""
         i = j = self.WIDTH // 2
         self.grid[i][j].infect()
 
-    def get_coords_neighs(self, x, y):
+    def _get_coords_neighs(self, x, y):
+        """Get the coordinates of the neighbours of the cell by its
+        position in the grid, NOT ITS XY ATTRIBUTES."""
         return [(i, j) for i in range(x-1, x+2) for j in range(y-1, y+2)
                 if (i!=x or j!=y) and 0<=i<self.WIDTH and 0<=j<self.WIDTH]
 
     def main(self):
+        """Main simulation routine."""
         f = open(f'data/{self.FILENAME}', 'w', encoding='UTF-8')
         f.write("infections,dead,recovered,infected\n")
         self.application.params.set(self.get_params())
-        self.infect_middle_cell()
+        self._infect_middle_cell()
 
         for day in range(self.DAYS):
             f.write(f"{self.num_infections},{self.num_dead},"
@@ -205,7 +236,7 @@ Medicine effectiveness: {:.2f}%""".format(self.RATE * 100,
                             and random.random() < self.Q_EFFECTIVENESS:
                         cur_cell.quarantine()
                     if not cur_cell.quarantined:
-                        coords_neighs = self.get_coords_neighs(i, j)
+                        coords_neighs = self._get_coords_neighs(i, j)
                         for p, q in coords_neighs:
                             cur_neigh = self.grid[p][q]
                             if cur_neigh.color == BLACK or cur_neigh.infected:
@@ -217,7 +248,10 @@ Medicine effectiveness: {:.2f}%""".format(self.RATE * 100,
 
 
 class Application:
+    """GUI for the simulation."""
+
     def __init__(self):
+        """Initialize the elements of the GUI."""
         self.window = tk.Tk()
         self.window.iconphoto(False, tk.PhotoImage(file='resources/icon.png'))
         self.window.title("EpidemLab")
@@ -324,6 +358,8 @@ class Application:
         self.window.mainloop()
 
     def get_input(self):
+        """Get user input and change the default parameters of the
+        simulation if given any."""
         rate = self.rate_label.get()
         if rate:
             self.simulation.RATE = float(rate)
@@ -356,8 +392,10 @@ class Application:
             self.simulation.FILENAME = f"{filename}.csv"
 
     def main(self):
+        """Get user input and lauch the simulation based on it."""
         self.get_input()
         self.simulation.main()
 
 
+# Launch the application
 Application()
