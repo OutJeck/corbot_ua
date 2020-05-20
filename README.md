@@ -117,3 +117,10 @@ The third button - CorBot - is a link to the implemented telegram bot, which we 
 
 And the fourth button - Documentary - a link to the documentation, which contains general information about the project, its methods and brief instructions for use.
 
+## Credits
+
+Yasinovskyi Pavlo, Dobrovolskyi Nazar
+
+## License
+
+GNU General Public License v3.0
