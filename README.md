@@ -15,6 +15,13 @@ respectively. It was created as a semester work from the programming basics cour
 
 This application simulates a disease spread with you parameters. It is simple yet versatile and effectively shows and visualizes the dependency of the spread of a disease on its parameters and mitigation measures. The idea was developed thanks to the article from https://towardsdatascience.com.
 
+Legend:
+* 🟢 - healthy
+* 🟠 - infected, but not contagious
+* 🔴 - infected and contagious
+* 🔵 - quarantined
+* ⚫️ - dead
+
 With quarantine
 
 ![with_q](https://github.com/kenticent9/corbot_ua/blob/master/images/with_q.gif)
