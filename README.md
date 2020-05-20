@@ -2,7 +2,7 @@
 
 ![license](https://img.shields.io/github/license/kenticent9/corbot_ua) ![commit activity](https://img.shields.io/github/commit-activity/m/kenticent9/corbot_ua) ![last commit](https://img.shields.io/github/last-commit/kenticent9/corbot_ua)
 
-This is a repository for mini-projects about COVID-19: EpidemLab, Corbot and Cormap, which 
+This is a repository for mini-projects about COVID-19: EpidemLab, Corbot and Cormap on website, which 
 * simulate the spread of the disease with your parameters
 * keep you updated with the daily coronavirus situation in a country you choose, build comparison plots
 * display the current coronavirus situation around the globe 
