@@ -45,7 +45,7 @@ class Cell:
 
     def draw(self):
         """Render the cell on the canvas."""
-        self.canvas.create_oval(self.x, self.y, self.x+10, self.y+10,
+        self.canvas.create_oval(self.x, self.y, self.x+9, self.y+9,
                                 fill=self.color)
 
     def infect(self):
@@ -287,7 +287,13 @@ class Application:
         self.params_label.grid(row=2, column=3, columnspan=2, sticky=tk.NSEW)
 
         self.start = tk.Button(command=self.main, text='START')
-        self.start.grid(row=3, column=2)
+        self.start.grid(row=3, column=0, columnspan=3)
+
+        def create_simulation():
+            self.simulation = Simulation(self)
+
+        self.regenerate = tk.Button(command=create_simulation, text="RECREATE GRID")
+        self.regenerate.grid(row=3, column=2, columnspan=3)
 
         density_label = tk.Label(self.window, text="PARAMETERS")
         density_label.grid(row=4, column=0, columnspan=3)
